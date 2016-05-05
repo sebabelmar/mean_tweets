@@ -1,6 +1,10 @@
 angular.module('MainCtrl', [])
-	.controller('MainController', function($scope) {
+	.controller('MainController', ['$scope' , '$http', 'Tweeter',
+		function($scope, $http, Tweeter) {
 
-		$scope.tagline = 'To the moon and back!';
+			Tweeter.list()
+				.then(function(tweets) {
+					$scope.tweets = tweets;
+				});
 
-});
+		}]);
