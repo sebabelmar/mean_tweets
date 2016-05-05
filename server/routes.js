@@ -1,8 +1,10 @@
 module.exports = function(app) {
+	var tweet = require ('./controllers/tweets.controller');
 
 	// server routes ===========================================================
-	// handle things like api calls
-	// authentication routes
+	app.get('/tweets', tweet.list);
+
+	
 
 	// frontend routes =========================================================
 	// route to handle all angular requests
