@@ -6,7 +6,7 @@ angular.module('TweeterDirective', [])
 				scope: {
 					data: '='
 				},
-				template: '<h2>HEY</h2>',
+				template: '<div class="infobox" id="data-info""></div><div class="twitterviz"></div>',
 				link: function(scope, element, attrs) {
 
 					console.log(d3);
@@ -21,16 +21,16 @@ angular.module('TweeterDirective', [])
 						d3.select(".infobox").style("display", "block");
 						// add test to p tag in infobox
 						d3.select("#data-info")
-							.text("Pigglets at the age of " + this.__data__.age + " voted " + this.__data__.total_group_votes + " times. This age represents " + this.__data__.votes_percentage + "%  of the total votes of the '" + this.__data__.group + "' group.");
+							.text("Pigglets at the age of voted " + this.__data__.radius);
 					};
-
+					
 					var myMouseOutFunction = function() {
 						var circle = d3.select(this);
 						// display none removes element totally, whereas visibilty in last example just hid it
 						d3.select(".infobox").style("display", "none");
 					};
 
-					var ageWidth          = 320,
+					var ageWidth          = 500,
 					    ageHeight         = 300,
 					    agePadding        = 1.5, // separation between same-color nodes
 					    ageClusterPadding = 6, // separation between different-color nodes
@@ -54,22 +54,18 @@ angular.module('TweeterDirective', [])
 					var clusters = new Array(m);
 
 					var nodes = d3.range(n).map(function() {
-						var i = nodes_info[counter].group_num;
-						var age = nodes_info[counter].age;
-						var percentage = nodes_info[counter].total_positive_votes/nodes_info[counter].total_group_votes
+						var i = nodes_info[counter]._id;
+						var percentage = nodes_info[counter].totalCount / 195;
 						var r = percentage*(ageMaxRadius + 1);
 						var d = {
-							age: nodes_info[counter].age,
-							group: nodes_info[counter].group,
-							total_group_votes: nodes_info[counter].total_group_votes,
-							votes_percentage: Math.floor(percentage*100),
+							// votes_percentage: Math.floor(percentage*100),
 							cluster: i,
 							radius: r,
 							x: Math.cos(i/m*2*Math.PI)*200 + ageWidth/2 + Math.random(),
 							y: Math.sin(i/m*2*Math.PI)*200 + ageHeight/2 + Math.random()
 						};
 
-						counter += 1
+						counter += 1;
 						if(!clusters[i] || (r>clusters[i].radius)) clusters[i] = d;
 						return d
 					});
@@ -82,7 +78,7 @@ angular.module('TweeterDirective', [])
 						.on("tick", ageTick)
 						.start();
 
-					var svg = d3.select(".agedisplay").append("svg")
+					var svg = d3.select(".twitterviz").append("svg")
 						.attr("width", ageWidth)
 						.attr("height", ageHeight);
 
