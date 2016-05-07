@@ -7,7 +7,7 @@ angular.module('TweeterDirective', [])
 				scope: {
 					data: '=?'
 				},
-				template: '<div class="infobox" id="data-info""></div><div class="twitterviz"></div>',
+				template: '<div class="infobox" id="data-info""></div><div class="twitterviz"></div><br>',
 				link: function(scope, element, attrs) {
 
 					// ----- BUBBLE PLOT -----
@@ -20,7 +20,7 @@ angular.module('TweeterDirective', [])
 						d3.select(".infobox").style("display", "block");
 						// add test to p tag in infobox
 						d3.select("#data-info")
-							.text("Pigglets at the age of voted " + this.__data__.radius);
+							.text(this.__data__.cluster + ' represents ' +  this.__data__.tweets_percentage + '% of the total.');
 					};
 
 					var myMouseOutFunction = function() {
@@ -33,7 +33,7 @@ angular.module('TweeterDirective', [])
 					    ageHeight         = 400,
 					    agePadding        = 1.5, // separation between same-color nodes
 					    ageClusterPadding = 6, // separation between different-color nodes
-					    ageMaxRadius      = 10;
+					    ageMaxRadius      = 1000;
 
 
 					// what about creating a structure like this but jsonic style in order to do not perform any
@@ -61,10 +61,10 @@ angular.module('TweeterDirective', [])
 
 						var nodes = d3.range(n).map(function() {
 							var i = data[counter]._id;
-							var percentage = data[counter].totalCount/195;
+							var percentage = data[counter].totalCount/29353;
 							var r = percentage*(ageMaxRadius + 1);
 							var d = {
-								// votes_percentage: Math.floor(percentage*100),
+								tweets_percentage: Math.floor(percentage*10000) /100,
 								cluster: i,
 								radius: r,
 								x: Math.cos(i/m*2*Math.PI)*200 + ageWidth/2 + Math.random(),
