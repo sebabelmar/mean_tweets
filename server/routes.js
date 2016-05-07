@@ -3,6 +3,7 @@ module.exports = function(app) {
 
 	// server routes ===========================================================
 	app.get('/tweets', tweet.list);
+	app.get('/tweets/aggregate', tweet.aggregate);
 
 	
 

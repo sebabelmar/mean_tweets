@@ -3,5 +3,7 @@ angular.module('tweetsApp', [
 	'appRoutes',
 	'MainCtrl',
 	'TweeterCtrl',
-	'TweeterService'
+	'd3Service',
+	'TweeterService',
+	'TweeterDirective'
 ]);
