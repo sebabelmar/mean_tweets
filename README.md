@@ -3,7 +3,7 @@ Simple MEAN tweets viz
 ![alt text](docs/simple_view.png)
 ##Installation
 
-`npm install`
+`npm install`  
 `bower install`
 
 ##Run it
