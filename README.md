@@ -10,5 +10,5 @@ Simple MEAN tweets viz
 `node server.js`
 
 ##Visit it
-Server running in,
+Server running at:  
 `http://localhost:8080/`
