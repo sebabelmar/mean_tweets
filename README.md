@@ -1,6 +1,6 @@
 # mean_tweets
 Simple MEAN tweets viz
-
+![alt text]('docs/simple_view.png)
 ##Installation
 
 `npm install`
