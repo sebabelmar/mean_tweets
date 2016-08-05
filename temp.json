@@ -1,0 +1,6 @@
+{
+  "city": String,
+  "loc": Array,
+  "pop": Number,
+  "state": String
+}
