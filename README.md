@@ -1,14 +1,14 @@
 # mean_tweets
 Simple MEAN tweets viz
 ![alt text](docs/simple_view.png)
-##Installation
+## Installation
 
 `npm install`  
 `bower install`
 
-##Run it
+## Run it
 `node server.js`
 
-##Visit it
+## Visit it
 Server running at:  
 `http://localhost:8080/`
